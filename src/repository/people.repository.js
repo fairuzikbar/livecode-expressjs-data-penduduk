@@ -14,13 +14,12 @@ const PeopleRepository = (db) => {
             let nik = payload.province_id + payload.regency_id + payload.district_id + birthArray[2] + birthArray[1] + birthArray[0][2] + birthArray[0][3] + randomNum;
             return nik;
         }
-        console.log(generateNIK());
 
         const result = await db.query(
             PeopleQuery().CREATE_PEOPLE,
             [
                 payload.id,
-                generateNIK,
+                generateNIK(),
                 payload.name,
                 payload.gender,
                 payload.dob,
