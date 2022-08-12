@@ -9,6 +9,7 @@ const PeopleDto = (result, index = 0) => {
         result.rows[index].dob,
         result.rows[index].pob,
         result.rows[index].province_id,
+        result.rows[index].province,
         result.rows[index].regency_id,
         result.rows[index].district_id,
         result.rows[index].created_at,

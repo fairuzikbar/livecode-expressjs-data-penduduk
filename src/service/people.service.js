@@ -14,7 +14,7 @@ const PeopleService = (peopleRepository) => {
         try {
             return await list(prov, reg, dist)
         } catch (error) {
-            return err.message
+            console.log(error);
         }
     };
 

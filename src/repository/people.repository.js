@@ -44,20 +44,33 @@ const PeopleRepository = (db) => {
         }
     }
 
+    // const list = async (prov, reg, dist) => {
+    //     try {
+    //         const peoples = [];
+    //         if(prov && reg && dist){
+    //             const result = await db.query(PeopleQuery().SEARCH_PEOPLE, [`%${prov}%, %${reg}%, %${dist}%`]);
+    //             for(let i = 0; i < result.rows.length; i++){
+    //             peoples.push(PeopleDto(result, i))
+    //         }
+    //         } else {
+    //             return `People in province ${prov}, regency ${reg}, and district ${dist} not found!`
+    //         }
+    //         return peoples
+    //     } catch (error) {
+    //         return err.message;
+    //     }
+    // };
+
     const list = async (prov, reg, dist) => {
         try {
-            const peoples = [];
-            if(prov && reg && dist){
-                const result = await db.query(PeopleQuery().SEARCH_PEOPLE, [`%${prov}%, %${reg}%, %${dist}%`]);
-                for(let i = 0; i < result.rows.length; i++){
-                peoples.push(PeopleDto(result, i))
-            }
-            } else {
-                return `People in province ${prov}, regency ${reg}, and district ${dist} not found!`
-            }
-            return peoples
+            // const peoples = [];
+            const result = await db.query(PeopleQuery().SEARCH_PEOPLE, [`${prov}`, `${reg}`, `${dist}`]);
+            // for(let i = 0; i < result.rows.length; i++){
+            // peoples.push(result.rows)
+            // }
+            return result.rows;
         } catch (error) {
-            return err.message;
+            console.log(error);
         }
     };
 

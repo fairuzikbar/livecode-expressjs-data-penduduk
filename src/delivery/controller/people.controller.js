@@ -14,12 +14,13 @@ const PeopleController = () => {
 
     const listPeople = async (req,res) => {
         try {
-            const prov = req.query.username
-            const reg = req.query.username
-            const dist = req.query.username
+            const prov = req.query.province
+            const reg = req.query.regency
+            const dist = req.query.district
             const people = await req.service.findAllPeople(prov, reg, dist);
             res.json(Response().successMessage(res.statusCode, 'SUCCESS', people));
         } catch (error) {
+            console.log(error);
             res.json(Response().errorMessage('XX', 'gagal'))
         }
     }
